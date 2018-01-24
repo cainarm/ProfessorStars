@@ -1,0 +1,80 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.addStudent = addStudent;
+exports.removeStudent = removeStudent;
+exports.getAllStudents = getAllStudents;
+exports.rate = rate;
+exports.unRate = unRate;
+
+var _Students = require("../Api/Students.js");
+
+var regeneratorRuntime = require("regenerator-runtime");
+
+function addStudent(name, className) {
+    var student = {
+        name: name,
+        stars: 0
+    };
+
+    (0, _Students.createStudent)(student, className);
+
+    return {
+        type: "ADD_STUDENT",
+        payload: student
+    };
+}
+
+function removeStudent(name, className) {
+    (0, _Students.removeStudent)(name, className);
+
+    return {
+        type: "REMOVE_STUDENT",
+        payload: name
+    };
+}
+
+function getAllStudents(name) {
+    return regeneratorRuntime.async(function getAllStudents$(_context) {
+        while (1) {
+            switch (_context.prev = _context.next) {
+                case 0:
+                    _context.next = 2;
+                    return regeneratorRuntime.awrap((0, _Students.getAllStudents)(name));
+
+                case 2:
+                    _context.t0 = _context.sent;
+                    return _context.abrupt("return", {
+                        type: "ADD_STUDENTS",
+                        payload: _context.t0
+                    });
+
+                case 4:
+                case "end":
+                    return _context.stop();
+            }
+        }
+    }, null, this);
+}
+
+function rate(name, className) {
+    (0, _Students.rate)(name, className);
+
+    return {
+        type: "RATE",
+        payload: {
+            name: name
+        }
+    };
+}
+
+function unRate(name, className) {
+    (0, _Students.unRate)(name, className);
+
+    return {
+        type: "UNRATE",
+        payload: {
+            name: name
+        }
+    };
+}

@@ -1,0 +1,118 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = undefined;
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require('react-native');
+
+var _nativeBase = require('native-base');
+
+var styles = _reactNative.StyleSheet.create({
+    listItem: {
+        borderWidth: 0.5,
+        borderColor: '#E0E0E0',
+        borderRadius: 3,
+        margin: 5,
+        marginRight: 15
+    },
+    text: {
+        left: 10,
+        fontSize: 22,
+        fontWeight: '100',
+        color: '#424242',
+        fontFamily: 'sans-serif-thin'
+    }
+});
+
+var Lt = function (_Component) {
+    babelHelpers.inherits(Lt, _Component);
+
+    function Lt(props) {
+        babelHelpers.classCallCheck(this, Lt);
+
+        var _this = babelHelpers.possibleConstructorReturn(this, (Lt.__proto__ || Object.getPrototypeOf(Lt)).call(this, props));
+
+        _this.state = {
+            pressed: false
+        };
+        return _this;
+    }
+
+    babelHelpers.createClass(Lt, [{
+        key: 'redirect',
+        value: function redirect() {
+            var _this2 = this;
+
+            if (!this.state.pressed) {
+                this.props.redirect();
+
+                this.setState({
+                    pressed: true
+                }, function () {
+                    setTimeout(function () {
+                        _this2.setState({
+                            pressed: false
+                        });
+                    }, 1400);
+                });
+            }
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this3 = this;
+
+            var _props = this.props,
+                children = _props.children,
+                icon = _props.icon,
+                onDeleteButtonClick = _props.onDeleteButtonClick;
+
+            return _react2.default.createElement(
+                _nativeBase.ListItem,
+                {
+                    style: styles.listItem,
+                    dis: true,
+                    onPress: function onPress() {
+                        return _this3.redirect();
+                    }
+                },
+                _react2.default.createElement(
+                    _nativeBase.Left,
+                    null,
+                    _react2.default.createElement(
+                        _nativeBase.View,
+                        null,
+                        _react2.default.createElement(
+                            _nativeBase.Text,
+                            { style: styles.text },
+                            children
+                        )
+                    )
+                ),
+                _react2.default.createElement(
+                    _nativeBase.Right,
+                    null,
+                    icon && _react2.default.createElement(
+                        _nativeBase.Button,
+                        {
+                            danger: true,
+                            bordered: true,
+                            onPress: function onPress() {
+                                return onDeleteButtonClick();
+                            }
+                        },
+                        icon
+                    )
+                )
+            );
+        }
+    }]);
+    return Lt;
+}(_react.Component);
+
+exports.default = Lt;
+;

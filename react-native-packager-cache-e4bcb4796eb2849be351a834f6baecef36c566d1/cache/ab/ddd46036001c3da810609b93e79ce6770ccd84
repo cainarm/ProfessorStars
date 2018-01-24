@@ -1,0 +1,22 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _redux = require('redux');
+
+var _ClassesReducer = require('./Reducers/ClassesReducer');
+
+var _ClassesReducer2 = babelHelpers.interopRequireDefault(_ClassesReducer);
+
+var _StudentsReducer = require('./Reducers/StudentsReducer');
+
+var _StudentsReducer2 = babelHelpers.interopRequireDefault(_StudentsReducer);
+
+var _reduxAsyncAwait = require('redux-async-await');
+
+var _reduxAsyncAwait2 = babelHelpers.interopRequireDefault(_reduxAsyncAwait);
+
+exports.default = (0, _redux.createStore)((0, _redux.combineReducers)({
+    classes: _ClassesReducer2.default,
+    students: _StudentsReducer2.default
+}), {}, (0, _redux.applyMiddleware)(_reduxAsyncAwait2.default));

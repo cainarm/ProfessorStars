@@ -1,0 +1,107 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var _jsxFileName = '/home/cainarm/professorStars/src/Components/ListItem.js';
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactNative = require('react-native');
+
+var _nativeBase = require('native-base');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var styles = _reactNative.StyleSheet.create({
+    listItem: {
+        borderWidth: 0.5,
+        borderColor: '#E0E0E0',
+        borderRadius: 3,
+        margin: 5,
+        marginRight: 15
+    },
+    text: {
+        left: 10,
+        fontSize: 22,
+        fontWeight: '100',
+        color: '#424242',
+        fontFamily: 'sans-serif-thin'
+    }
+});
+
+exports.default = lt = function lt(_ref) {
+    var children = _ref.children,
+        icon = _ref.icon,
+        onDeleteButtonClick = _ref.onDeleteButtonClick,
+        _ref$redirect = _ref.redirect,
+        redirect = _ref$redirect === undefined ? function () {
+        return null;
+    } : _ref$redirect;
+
+    return _react2.default.createElement(
+        _nativeBase.ListItem,
+        {
+            style: styles.listItem,
+            dis: true,
+            onPress: function onPress() {
+                return redirect();
+            },
+            __source: {
+                fileName: _jsxFileName,
+                lineNumber: 33
+            }
+        },
+        _react2.default.createElement(
+            _nativeBase.Left,
+            {
+                __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 38
+                }
+            },
+            _react2.default.createElement(
+                _nativeBase.View,
+                {
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 39
+                    }
+                },
+                _react2.default.createElement(
+                    _nativeBase.Text,
+                    { style: styles.text, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 40
+                        }
+                    },
+                    children
+                )
+            )
+        ),
+        _react2.default.createElement(
+            _nativeBase.Right,
+            {
+                __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 45
+                }
+            },
+            icon && _react2.default.createElement(
+                _nativeBase.Button,
+                {
+                    danger: true,
+                    bordered: true,
+                    onPress: function onPress() {
+                        return onDeleteButtonClick();
+                    },
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 47
+                    }
+                },
+                icon
+            )
+        )
+    );
+};

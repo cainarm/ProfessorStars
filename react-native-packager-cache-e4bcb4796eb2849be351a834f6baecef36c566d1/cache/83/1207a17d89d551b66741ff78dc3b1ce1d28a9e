@@ -1,0 +1,96 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = undefined;
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _nativeBase = require('native-base');
+
+var createClassForm = function (_Component) {
+  babelHelpers.inherits(createClassForm, _Component);
+
+  function createClassForm() {
+    babelHelpers.classCallCheck(this, createClassForm);
+
+    var _this = babelHelpers.possibleConstructorReturn(this, (createClassForm.__proto__ || Object.getPrototypeOf(createClassForm)).call(this));
+
+    _this.state = {
+      text: null
+    };
+    return _this;
+  }
+
+  babelHelpers.createClass(createClassForm, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var _props = this.props,
+          submit = _props.submit,
+          onCancel = _props.onCancel;
+
+      return _react2.default.createElement(
+        _nativeBase.View,
+        null,
+        _react2.default.createElement(
+          _nativeBase.Form,
+          null,
+          _react2.default.createElement(
+            _nativeBase.Item,
+            { floatingLabel: true, style: { marginRight: 10 } },
+            _react2.default.createElement(
+              _nativeBase.Label,
+              null,
+              'Nome'
+            ),
+            _react2.default.createElement(_nativeBase.Input, { onChangeText: function onChangeText(text) {
+                return _this2.setState({ text: text });
+              } })
+          )
+        ),
+        _react2.default.createElement(
+          _nativeBase.Button,
+          {
+            full: true,
+            style: { top: 15, margin: 5, borderRadius: 4 },
+            onPress: function onPress() {
+              if (_this2.state.text !== null && _this2.state.text !== "") {
+                submit(_this2.state.text);
+                onCancel();
+              }
+            }
+          },
+          _react2.default.createElement(
+            _nativeBase.Text,
+            null,
+            'Inserir'
+          )
+        ),
+        _react2.default.createElement(
+          _nativeBase.Button,
+          {
+            full: true,
+            bordered: true,
+            danger: true,
+            style: { top: 15, margin: 5, borderRadius: 4 },
+            onPress: function onPress() {
+              return onCancel();
+            }
+          },
+          _react2.default.createElement(
+            _nativeBase.Text,
+            null,
+            'Cancelar'
+          )
+        )
+      );
+    }
+  }]);
+  return createClassForm;
+}(_react.Component);
+
+exports.default = createClassForm;
+;

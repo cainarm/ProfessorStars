@@ -1,0 +1,99 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require('react-native');
+
+var _nativeBase = require('native-base');
+
+var styles = _reactNative.StyleSheet.create({
+  header: {
+    backgroundColor: '#0277BD',
+    height: 85
+  },
+  body: {
+    paddingTop: 15
+  },
+  title: {
+    fontFamily: 'Roboto',
+    color: '#fff'
+  },
+  subtitle: {
+    color: '#fff',
+    marginLeft: 5
+  },
+  titleWithBackButton: {
+    color: '#fff',
+    marginLeft: -20
+  },
+  subTitleWithBackButton: {
+    color: '#fff',
+    marginLeft: -15
+  },
+  content: {
+    backgroundColor: "#FAFAFA"
+  },
+  backButton: {
+    left: 5,
+    top: 5
+  }
+
+});
+
+exports.default = Structure = function Structure(_ref) {
+  var children = _ref.children,
+      title = _ref.title,
+      subtitle = _ref.subtitle,
+      fab = _ref.fab,
+      style = _ref.style,
+      _ref$hasBackButton = _ref.hasBackButton,
+      hasBackButton = _ref$hasBackButton === undefined ? false : _ref$hasBackButton,
+      backButtonAction = _ref.backButtonAction;
+
+  return _react2.default.createElement(
+    _nativeBase.Container,
+    null,
+    _react2.default.createElement(
+      _nativeBase.Header,
+      { style: styles.header },
+      hasBackButton && _react2.default.createElement(
+        _nativeBase.Left,
+        null,
+        _react2.default.createElement(
+          _nativeBase.Button,
+          { transparent: true, style: styles.backButton, onPress: function onPress() {
+              return backButtonAction();
+            } },
+          _react2.default.createElement(_nativeBase.Icon, { name: 'arrow-back' })
+        )
+      ),
+      _react2.default.createElement(
+        _nativeBase.Body,
+        { style: styles.body },
+        _react2.default.createElement(
+          _nativeBase.Title,
+          { style: !hasBackButton ? styles.title : styles.titleWithBackButton },
+          ' ',
+          title,
+          ' '
+        ),
+        _react2.default.createElement(
+          _nativeBase.Subtitle,
+          { style: !hasBackButton ? styles.subtitle : styles.subTitleWithBackButton },
+          subtitle
+        )
+      ),
+      _react2.default.createElement(_nativeBase.Right, null)
+    ),
+    _react2.default.createElement(
+      _nativeBase.Content,
+      babelHelpers.extends({ styles: styles.content }, style),
+      children
+    ),
+    fab && fab
+  );
+};

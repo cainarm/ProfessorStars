@@ -1,0 +1,54 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var defaultState = {
+    students: []
+};
+
+exports.default = StudentsReducer = function StudentsReducer() {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultState;
+    var action = arguments[1];
+
+    switch (action.type) {
+        case "ADD_STUDENT":
+            state = babelHelpers.extends({}, state, {
+                students: [].concat(babelHelpers.toConsumableArray(state.students), [action.payload])
+            });
+            break;
+        case "ADD_STUDENTS":
+            state = babelHelpers.extends({}, state, {
+                students: [].concat(babelHelpers.toConsumableArray(action.payload))
+            });
+            break;
+        case "REMOVE_STUDENT":
+            state = babelHelpers.extends({}, state, {
+                students: state.students.filter(function (student) {
+                    return student.name !== action.payload;
+                })
+            });
+            break;
+        case "RATE":
+            state = babelHelpers.extends({}, state, {
+                students: state.students.map(function (student) {
+                    if (student.name === action.payload.name) {
+                        student.stars = student.stars + 1;
+                    }
+
+                    return student;
+                })
+            });
+            break;
+        case "UNRATE":
+            state = babelHelpers.extends({}, state, {
+                students: state.students.map(function (student) {
+                    if (student.name === action.payload.name && student.stars > 0) {
+                        student.stars = student.stars - 1;
+                    }
+                    return student;
+                })
+            });
+            break;
+    }
+    return state;
+};

@@ -1,0 +1,101 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = undefined;
+var _jsxFileName = '/home/cainarm/professorStars/src/Components/ClassesList.js';
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require('react-native');
+
+var _ListItem = require('../Components/ListItem');
+
+var _ListItem2 = babelHelpers.interopRequireDefault(_ListItem);
+
+var _nativeBase = require('native-base');
+
+var styles = _reactNative.StyleSheet.create({
+    icon: {
+        fontSize: 35,
+        color: '#D50000'
+    }
+});
+
+var ClassesList = function (_Component) {
+    babelHelpers.inherits(ClassesList, _Component);
+
+    function ClassesList(props) {
+        babelHelpers.classCallCheck(this, ClassesList);
+
+        var _this = babelHelpers.possibleConstructorReturn(this, (ClassesList.__proto__ || Object.getPrototypeOf(ClassesList)).call(this, props));
+
+        _this.ds = new _reactNative.ListView.DataSource({ rowHasChanged: function rowHasChanged(r1, r2) {
+                return r1.name !== r2.name;
+            } });
+        _this.state = {
+            classes: _this.ds.cloneWithRows(props.classes)
+        };
+        return _this;
+    }
+
+    babelHelpers.createClass(ClassesList, [{
+        key: 'componentWillReceiveProps',
+        value: function componentWillReceiveProps(nextProps) {
+            this.setState({
+                classes: this.ds.cloneWithRows(nextProps.classes)
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            return _react2.default.createElement(_reactNative.ListView, {
+                style: { marginBottom: 60 },
+                dataSource: this.state.classes,
+                renderRow: function renderRow(_ref) {
+                    var name = _ref.name;
+
+                    return _react2.default.createElement(
+                        _ListItem2.default,
+                        {
+                            onDeleteButtonClick: function onDeleteButtonClick() {
+                                _reactNative.Alert.alert("Aviso", "Tem certeza que deseja deletar esta disciplina ?", [{ text: "Cancelar", onPress: function onPress() {
+                                        return null;
+                                    } }, { text: "Sim ", onPress: function onPress() {
+                                        return _this2.props.remove(name);
+                                    } }], { cancelable: true });
+                            },
+                            icon: _react2.default.createElement(_nativeBase.Icon, {
+                                name: 'ios-trash-outline',
+                                style: styles.icon,
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 51
+                                }
+                            }),
+                            redirect: function redirect() {
+                                _this2.props.setTargetClass(name);
+                                _this2.props.redirect();
+                            },
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 37
+                            }
+                        },
+                        name
+                    );
+                },
+                __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 32
+                }
+            });
+        }
+    }]);
+    return ClassesList;
+}(_react.Component);
+
+exports.default = ClassesList;

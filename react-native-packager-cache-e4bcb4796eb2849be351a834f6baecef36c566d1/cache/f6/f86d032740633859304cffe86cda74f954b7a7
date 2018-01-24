@@ -1,0 +1,187 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var _jsxFileName = '/home/cainarm/professorStars/src/Components/StudentListItem.js';
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require('react-native');
+
+var _reactNativeSwipeable = require('react-native-swipeable');
+
+var _reactNativeSwipeable2 = babelHelpers.interopRequireDefault(_reactNativeSwipeable);
+
+var _nativeBase = require('native-base');
+
+var styles = _reactNative.StyleSheet.create({
+    listItem: {
+        borderWidth: 0.5,
+        borderColor: '#E0E0E0',
+        borderRadius: 3,
+        margin: 5,
+        marginRight: 15
+    },
+    text: {
+        left: 10,
+        fontSize: 22,
+        fontWeight: '100',
+        color: '#424242',
+        fontFamily: 'sans-serif-thin'
+    },
+    starText: {
+        fontFamily: 'sans-serif-thin',
+        fontSize: 26
+    },
+    rightButton: {
+        top: 21,
+        backgroundColor: "#D32F2F"
+    }
+});
+
+exports.default = lt = function lt(_ref) {
+    var children = _ref.children,
+        stars = _ref.stars,
+        rate = _ref.rate,
+        unRate = _ref.unRate,
+        remove = _ref.remove;
+
+    return _react2.default.createElement(
+        _reactNativeSwipeable2.default,
+        {
+            rightButtons: [_react2.default.createElement(
+                _nativeBase.Button,
+                {
+                    danger: true,
+                    onPress: function onPress() {
+                        return unRate();
+                    },
+                    fullwidth: true,
+                    style: styles.rightButton,
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 45
+                    }
+                },
+                _react2.default.createElement(_nativeBase.Icon, {
+                    name: 'ios-star-outline',
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 51
+                    }
+                })
+            ), _react2.default.createElement(
+                _nativeBase.Button,
+                {
+                    danger: true,
+                    onPress: function onPress() {
+                        return remove();
+                    },
+                    style: styles.rightButton,
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 55
+                    }
+                },
+                _react2.default.createElement(_nativeBase.Icon, {
+                    name: 'ios-trash-outline',
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 60
+                    }
+                })
+            )],
+            __source: {
+                fileName: _jsxFileName,
+                lineNumber: 42
+            }
+        },
+        _react2.default.createElement(
+            _nativeBase.ListItem,
+            {
+                style: styles.listItem,
+                __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 67
+                }
+            },
+            _react2.default.createElement(
+                _nativeBase.Left,
+                {
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 70
+                    }
+                },
+                _react2.default.createElement(
+                    _nativeBase.View,
+                    {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 71
+                        }
+                    },
+                    _react2.default.createElement(
+                        _nativeBase.Text,
+                        { style: styles.text, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 72
+                            }
+                        },
+                        children
+                    )
+                ),
+                _react2.default.createElement(
+                    _nativeBase.Right,
+                    {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 76
+                        }
+                    },
+                    _react2.default.createElement(
+                        _nativeBase.Text,
+                        { style: styles.starText, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 77
+                            }
+                        },
+                        stars
+                    )
+                )
+            ),
+            _react2.default.createElement(
+                _nativeBase.Right,
+                {
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 80
+                    }
+                },
+                _react2.default.createElement(
+                    _nativeBase.Button,
+                    {
+                        transparent: true,
+                        bordered: true,
+                        warning: true,
+                        onPress: function onPress() {
+                            return rate();
+                        },
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 81
+                        }
+                    },
+                    _react2.default.createElement(_nativeBase.Icon, {
+                        name: 'ios-star-outline',
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 87
+                        }
+                    })
+                )
+            )
+        )
+    );
+};

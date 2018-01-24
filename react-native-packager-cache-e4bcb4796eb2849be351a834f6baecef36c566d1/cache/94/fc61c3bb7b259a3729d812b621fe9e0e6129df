@@ -1,0 +1,126 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require('react-native');
+
+var _reactNativeSwipeable = require('react-native-swipeable');
+
+var _reactNativeSwipeable2 = babelHelpers.interopRequireDefault(_reactNativeSwipeable);
+
+var _nativeBase = require('native-base');
+
+var styles = _reactNative.StyleSheet.create({
+    listItem: {
+        borderWidth: 0.5,
+        borderColor: '#E0E0E0',
+        borderRadius: 3,
+        margin: 5,
+        marginRight: 15
+    },
+    text: {
+        left: 10,
+        fontSize: 22,
+        fontWeight: '100',
+        color: '#424242',
+        fontFamily: 'sans-serif-thin'
+    },
+    starText: {
+        fontFamily: 'sans-serif-thin',
+        fontSize: 26
+    },
+    rightButton: {
+        top: 21,
+        backgroundColor: "#D32F2F"
+    }
+});
+
+exports.default = lt = function lt(_ref) {
+    var children = _ref.children,
+        stars = _ref.stars,
+        rate = _ref.rate,
+        unRate = _ref.unRate,
+        remove = _ref.remove;
+
+    return _react2.default.createElement(
+        _reactNativeSwipeable2.default,
+        {
+            rightButtons: [_react2.default.createElement(
+                _nativeBase.Button,
+                {
+                    danger: true,
+                    onPress: function onPress() {
+                        return unRate();
+                    },
+                    fullwidth: true,
+                    style: styles.rightButton
+                },
+                _react2.default.createElement(_nativeBase.Icon, {
+                    name: 'ios-star-outline'
+                })
+            ), _react2.default.createElement(
+                _nativeBase.Button,
+                {
+                    danger: true,
+                    onPress: function onPress() {
+                        return remove();
+                    },
+                    style: styles.rightButton
+                },
+                _react2.default.createElement(_nativeBase.Icon, {
+                    name: 'ios-trash-outline'
+                })
+            )]
+        },
+        _react2.default.createElement(
+            _nativeBase.ListItem,
+            {
+                style: styles.listItem
+            },
+            _react2.default.createElement(
+                _nativeBase.Left,
+                null,
+                _react2.default.createElement(
+                    _nativeBase.View,
+                    null,
+                    _react2.default.createElement(
+                        _nativeBase.Text,
+                        { style: styles.text },
+                        children
+                    )
+                ),
+                _react2.default.createElement(
+                    _nativeBase.Right,
+                    null,
+                    _react2.default.createElement(
+                        _nativeBase.Text,
+                        { style: styles.starText },
+                        stars
+                    )
+                )
+            ),
+            _react2.default.createElement(
+                _nativeBase.Right,
+                null,
+                _react2.default.createElement(
+                    _nativeBase.Button,
+                    {
+                        transparent: true,
+                        bordered: true,
+                        warning: true,
+                        onPress: function onPress() {
+                            return rate();
+                        }
+                    },
+                    _react2.default.createElement(_nativeBase.Icon, {
+                        name: 'ios-star-outline'
+                    })
+                )
+            )
+        )
+    );
+};

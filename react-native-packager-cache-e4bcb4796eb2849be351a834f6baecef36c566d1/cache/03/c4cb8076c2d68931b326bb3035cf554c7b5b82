@@ -1,0 +1,17 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _reactNavigation = require('react-navigation');
+
+var _StudentsContainer = require('./StudentsContainer');
+
+var _StudentsContainer2 = _interopRequireDefault(_StudentsContainer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = (0, _reactNavigation.StackNavigator)({
+    Students: { screen: _StudentsContainer2.default }
+}, {
+    headerMode: 'none'
+});

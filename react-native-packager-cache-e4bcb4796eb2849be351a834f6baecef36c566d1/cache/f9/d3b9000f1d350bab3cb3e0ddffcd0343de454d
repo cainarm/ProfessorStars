@@ -1,0 +1,64 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.addClass = addClass;
+exports.removeClass = removeClass;
+exports.getAllClasses = getAllClasses;
+exports.setTargetClass = setTargetClass;
+
+var _Classes = require("../Api/Classes.js");
+
+var regeneratorRuntime = require("regenerator-runtime");
+
+function addClass(name) {
+    var newClass = {
+        name: name,
+        students: []
+    };
+
+    (0, _Classes.createClass)(newClass);
+
+    return {
+        type: "ADD_CLASS",
+        payload: newClass
+    };
+}
+
+function removeClass(name) {
+    (0, _Classes.removeClass)(name);
+
+    return {
+        type: "REMOVE_CLASS",
+        payload: name
+    };
+}
+
+function getAllClasses(name) {
+    return regeneratorRuntime.async(function getAllClasses$(_context) {
+        while (1) {
+            switch (_context.prev = _context.next) {
+                case 0:
+                    _context.next = 2;
+                    return regeneratorRuntime.awrap((0, _Classes.getAllClasses)());
+
+                case 2:
+                    _context.t0 = _context.sent;
+                    return _context.abrupt("return", {
+                        type: "ADD_CLASSES",
+                        payload: _context.t0
+                    });
+
+                case 4:
+                case "end":
+                    return _context.stop();
+            }
+        }
+    }, null, this);
+}
+
+function setTargetClass(name) {
+    return {
+        type: "SET_TARGET_CLASS",
+        payload: name
+    };
+}

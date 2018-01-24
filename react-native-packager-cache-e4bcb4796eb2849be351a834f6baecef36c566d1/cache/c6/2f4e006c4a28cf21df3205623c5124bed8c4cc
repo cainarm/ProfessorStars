@@ -1,0 +1,81 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = undefined;
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _store = require('./src/store');
+
+var _store2 = babelHelpers.interopRequireDefault(_store);
+
+var _reactNative = require('react-native');
+
+var _Classes = require('./src/Containers/Classes');
+
+var _Classes2 = babelHelpers.interopRequireDefault(_Classes);
+
+var _expo = require('expo');
+
+var _expo2 = babelHelpers.interopRequireDefault(_expo);
+
+var regeneratorRuntime = require('regenerator-runtime');
+
+var App = function (_React$Component) {
+  babelHelpers.inherits(App, _React$Component);
+
+  function App() {
+    babelHelpers.classCallCheck(this, App);
+
+    var _this = babelHelpers.possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
+
+    _this.state = {
+      isReady: false
+    };
+    return _this;
+  }
+
+  babelHelpers.createClass(App, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      return regeneratorRuntime.async(function componentWillMount$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return regeneratorRuntime.awrap(_expo2.default.Font.loadAsync({
+                'Roboto': require('native-base/Fonts/Roboto.ttf'),
+                'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf')
+              }));
+
+            case 2:
+              this.setState({ isReady: true });
+
+            case 3:
+            case 'end':
+              return _context.stop();
+          }
+        }
+      }, null, this);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      if (!this.state.isReady) {
+        return _react2.default.createElement(_expo2.default.AppLoading, null);
+      }
+      return _react2.default.createElement(
+        _reactRedux.Provider,
+        { store: _store2.default },
+        _react2.default.createElement(_Classes2.default, null)
+      );
+    }
+  }]);
+  return App;
+}(_react2.default.Component);
+
+exports.default = App;

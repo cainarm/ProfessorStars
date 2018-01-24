@@ -1,0 +1,138 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = undefined;
+var _jsxFileName = '/home/cainarm/professorStars/src/Components/CreateClassForm.js';
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _nativeBase = require('native-base');
+
+var createClassForm = function (_Component) {
+  babelHelpers.inherits(createClassForm, _Component);
+
+  function createClassForm() {
+    babelHelpers.classCallCheck(this, createClassForm);
+
+    var _this = babelHelpers.possibleConstructorReturn(this, (createClassForm.__proto__ || Object.getPrototypeOf(createClassForm)).call(this));
+
+    _this.state = {
+      text: null
+    };
+    return _this;
+  }
+
+  babelHelpers.createClass(createClassForm, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var _props = this.props,
+          submit = _props.submit,
+          onCancel = _props.onCancel;
+
+      return _react2.default.createElement(
+        _nativeBase.View,
+        {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 26
+          }
+        },
+        _react2.default.createElement(
+          _nativeBase.Form,
+          {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 28
+            }
+          },
+          _react2.default.createElement(
+            _nativeBase.Item,
+            { floatingLabel: true, style: { marginRight: 10 }, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 29
+              }
+            },
+            _react2.default.createElement(
+              _nativeBase.Label,
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 30
+                }
+              },
+              'Nome'
+            ),
+            _react2.default.createElement(_nativeBase.Input, { onChangeText: function onChangeText(text) {
+                return _this2.setState({ text: text });
+              }, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 31
+              }
+            })
+          )
+        ),
+        _react2.default.createElement(
+          _nativeBase.Button,
+          {
+            full: true,
+            style: { top: 15, margin: 5, borderRadius: 4 },
+            onPress: function onPress() {
+              if (_this2.state.text !== null && _this2.state.text !== "") {
+                submit(_this2.state.text);
+                onCancel();
+              }
+            },
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 35
+            }
+          },
+          _react2.default.createElement(
+            _nativeBase.Text,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 45
+              }
+            },
+            'Inserir'
+          )
+        ),
+        _react2.default.createElement(
+          _nativeBase.Button,
+          {
+            full: true,
+            bordered: true,
+            danger: true,
+            style: { top: 15, margin: 5, borderRadius: 4 },
+            onPress: function onPress() {
+              return onCancel();
+            },
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 48
+            }
+          },
+          _react2.default.createElement(
+            _nativeBase.Text,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 55
+              }
+            },
+            'Cancelar'
+          )
+        )
+      );
+    }
+  }]);
+  return createClassForm;
+}(_react.Component);
+
+exports.default = createClassForm;
+;

@@ -1,0 +1,39 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var defaultState = {
+    classes: [],
+    targetClass: null
+};
+
+exports.default = ClassesReducer = function ClassesReducer() {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultState;
+    var action = arguments[1];
+
+    switch (action.type) {
+        case "ADD_CLASS":
+            state = babelHelpers.extends({}, state, {
+                classes: [].concat(babelHelpers.toConsumableArray(state.classes), [action.payload])
+            });
+            break;
+        case "ADD_CLASSES":
+            state = babelHelpers.extends({}, state, {
+                classes: [].concat(babelHelpers.toConsumableArray(action.payload))
+            });
+            break;
+        case "REMOVE_CLASS":
+            state = babelHelpers.extends({}, state, {
+                classes: state.classes.filter(function (classes) {
+                    return classes.name !== action.payload;
+                })
+            });
+            break;
+        case "SET_TARGET_CLASS":
+            state = babelHelpers.extends({}, state, {
+                targetClass: action.payload
+            });
+            break;
+    }
+    return state;
+};

@@ -1,0 +1,149 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _jsxFileName = '/home/cainarm/professorStars/src/Components/Structure.js';
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactNative = require('react-native');
+
+var _nativeBase = require('native-base');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var styles = _reactNative.StyleSheet.create({
+  header: {
+    backgroundColor: '#0277BD',
+    height: 85
+  },
+  body: {
+    paddingTop: 15
+  },
+  title: {
+    fontFamily: 'Roboto',
+    color: '#fff'
+  },
+  subtitle: {
+    color: '#fff',
+    marginLeft: 5
+  },
+  titleWithBackButton: {
+    color: '#fff',
+    marginLeft: -20
+  },
+  subTitleWithBackButton: {
+    color: '#fff',
+    marginLeft: -15
+  },
+  content: {
+    backgroundColor: "#FAFAFA"
+  },
+  backButton: {
+    left: 5,
+    top: 5
+  }
+
+});
+
+exports.default = Structure = function Structure(_ref) {
+  var children = _ref.children,
+      title = _ref.title,
+      subtitle = _ref.subtitle,
+      fab = _ref.fab,
+      style = _ref.style,
+      _ref$hasBackButton = _ref.hasBackButton,
+      hasBackButton = _ref$hasBackButton === undefined ? false : _ref$hasBackButton,
+      backButtonAction = _ref.backButtonAction;
+
+  return _react2.default.createElement(
+    _nativeBase.Container,
+    {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 52
+      }
+    },
+    _react2.default.createElement(
+      _nativeBase.Header,
+      { style: styles.header, __source: {
+          fileName: _jsxFileName,
+          lineNumber: 53
+        }
+      },
+      hasBackButton && _react2.default.createElement(
+        _nativeBase.Left,
+        {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 55
+          }
+        },
+        _react2.default.createElement(
+          _nativeBase.Button,
+          { transparent: true, style: styles.backButton, onPress: function onPress() {
+              return backButtonAction();
+            }, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 56
+            }
+          },
+          _react2.default.createElement(_nativeBase.Icon, { name: 'arrow-back', __source: {
+              fileName: _jsxFileName,
+              lineNumber: 57
+            }
+          })
+        )
+      ),
+      _react2.default.createElement(
+        _nativeBase.Body,
+        { style: styles.body, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 61
+          }
+        },
+        _react2.default.createElement(
+          _nativeBase.Title,
+          { style: !hasBackButton ? styles.title : styles.titleWithBackButton, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 62
+            }
+          },
+          ' ',
+          title,
+          ' '
+        ),
+        _react2.default.createElement(
+          _nativeBase.Subtitle,
+          { style: !hasBackButton ? styles.subtitle : styles.subTitleWithBackButton, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 63
+            }
+          },
+          subtitle
+        )
+      ),
+      _react2.default.createElement(_nativeBase.Right, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 65
+        }
+      })
+    ),
+    _react2.default.createElement(
+      _nativeBase.Content,
+      _extends({ styles: styles.content }, style, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 67
+        }
+      }),
+      children
+    ),
+    fab && fab
+  );
+};

@@ -1,0 +1,204 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _reactNative = require('react-native');
+
+var _StudentListItem = require('../../Components/StudentListItem');
+
+var _StudentListItem2 = babelHelpers.interopRequireDefault(_StudentListItem);
+
+var _Structure = require('../../Components/Structure');
+
+var _Structure2 = babelHelpers.interopRequireDefault(_Structure);
+
+var _reactNativeModal = require('react-native-modal');
+
+var _reactNativeModal2 = babelHelpers.interopRequireDefault(_reactNativeModal);
+
+var _CreateClassForm = require('../../Components/CreateClassForm');
+
+var _CreateClassForm2 = babelHelpers.interopRequireDefault(_CreateClassForm);
+
+var _StudentsActions = require('../../Actions/StudentsActions');
+
+var _underscore = require('underscore');
+
+var _underscore2 = babelHelpers.interopRequireDefault(_underscore);
+
+var _reactNavigation = require('react-navigation');
+
+var _nativeBase = require('native-base');
+
+var styles = _reactNative.StyleSheet.create({
+  icon: {
+    fontSize: 35,
+    color: '#D50000'
+  }
+});
+
+var Index = function (_React$Component) {
+  babelHelpers.inherits(Index, _React$Component);
+
+  function Index(props) {
+    babelHelpers.classCallCheck(this, Index);
+
+    var _this = babelHelpers.possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).call(this, props));
+
+    _this.ds = new _reactNative.ListView.DataSource({ rowHasChanged: function rowHasChanged(r1, r2) {
+        return _underscore2.default.isMatch(r1, r2);
+      } });
+    _this.state = {
+      students: _this.ds.cloneWithRows(props.students),
+      modal: false
+    };
+    return _this;
+  }
+
+  babelHelpers.createClass(Index, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      this.props.getAllStudents(this.props.targetClass);
+    }
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      this.setState({
+        students: this.ds.cloneWithRows(nextProps.students)
+      });
+    }
+  }, {
+    key: 'toggleModal',
+    value: function toggleModal() {
+      this.setState({
+        modal: !this.state.modal
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var _props$navigation = this.props.navigation,
+          navigate = _props$navigation.navigate,
+          goBack = _props$navigation.goBack;
+
+
+      return _react2.default.createElement(
+        _Structure2.default,
+        {
+          title: 'Professor Stars',
+          subtitle: 'Alunos',
+          hasBackButton: true,
+          backButtonAction: function backButtonAction() {
+            return _this2.props.navigation.dispatch(_reactNavigation.NavigationActions.back());
+          },
+          fab: _react2.default.createElement(
+            _nativeBase.Fab,
+            {
+              direction: 'up',
+              position: 'bottomRight',
+              onPress: function onPress() {
+                return _this2.toggleModal();
+              },
+              style: { right: -10, backgroundColor: "#01579B", position: 'absolute' }
+            },
+            _react2.default.createElement(_nativeBase.Icon, {
+              name: 'md-add'
+            })
+          )
+        },
+        _react2.default.createElement(_reactNative.ListView, {
+          style: { marginBottom: 60 },
+          dataSource: this.state.students,
+          renderRow: function renderRow(_ref) {
+            var name = _ref.name,
+                stars = _ref.stars;
+
+            return _react2.default.createElement(
+              _StudentListItem2.default,
+              {
+                remove: function remove() {
+                  _reactNative.Alert.alert("Aviso", "Tem certeza que deseja deletar este aluno ?", [{ text: "Cancelar", onPress: function onPress() {
+                      return null;
+                    } }, { text: "Sim ", onPress: function onPress() {
+                      return _this2.props.remove(name, _this2.props.targetClass);
+                    } }], { cancelable: true });
+                },
+                stars: stars,
+                rate: function rate() {
+                  return _this2.props.rate(name, _this2.props.targetClass);
+                },
+                unRate: function unRate() {
+                  return _this2.props.unRate(name, _this2.props.targetClass);
+                },
+                icon: _react2.default.createElement(_nativeBase.Icon, {
+                  name: 'ios-trash-outline',
+                  style: styles.icon
+                })
+              },
+              name
+            );
+          }
+        }),
+        _react2.default.createElement(
+          _reactNativeModal2.default,
+          {
+            isVisible: this.state.modal,
+            onBackButtonPress: function onBackButtonPress() {
+              return _this2.toggleModal();
+            }
+
+          },
+          _react2.default.createElement(
+            _reactNative.View,
+            { style: { backgroundColor: '#fff', height: 206, borderRadius: 4 } },
+            _react2.default.createElement(_CreateClassForm2.default, {
+              onCancel: function onCancel() {
+                return _this2.toggleModal();
+              },
+              submit: function submit(value) {
+                return _this2.props.add(value, _this2.props.targetClass);
+              }
+            })
+          )
+        )
+      );
+    }
+  }]);
+  return Index;
+}(_react2.default.Component);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    students: state.students.students,
+    targetClass: state.classes.targetClass
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    add: function add(value, name) {
+      dispatch((0, _StudentsActions.addStudent)(value, name));
+    },
+    remove: function remove(value, name) {
+      dispatch((0, _StudentsActions.removeStudent)(value, name));
+    },
+    getAllStudents: function getAllStudents(value) {
+      dispatch((0, _StudentsActions.getAllStudents)(value));
+    },
+    rate: function rate(name, className) {
+      dispatch((0, _StudentsActions.rate)(name, className));
+    },
+    unRate: function unRate(name, className) {
+      dispatch((0, _StudentsActions.unRate)(name, className));
+    }
+  };
+};
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Index);

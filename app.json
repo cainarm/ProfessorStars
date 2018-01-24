@@ -1,0 +1,15 @@
+ {
+   "expo": {
+    "name": "Professor Stars",
+    "icon": "./src/Assets/images/icon.png",
+    "version": "1.0.0",
+    "slug": "APP de estrelinhas",
+    "sdkVersion": "21.0.0",
+    "ios": {
+      "bundleIdentifier": "com.yourcompany.yourappname"
+    },
+    "android": {
+      "package": "com.yourcompany.yourappname"
+    }
+   }
+ }
